@@ -1,0 +1,34 @@
+.wrap {
+    font-family: 'Do Hyeon', sans-serif;
+    width: 900px;
+    height : 1000px;
+    margin: auto;
+    cursor: pointer;
+    background-color: white      
+}
+
+.mainBox {
+    height : 875px;
+    margin-bottom: 30px;
+}
+
+.banner {
+    height: 200px;
+    /* background-color:#FBF8EF; */
+    background-color: white;
+
+}
+
+img {
+    margin: auto;
+    width: 200px;
+    padding-top: 50px;
+    display: block;
+    text-align: center;
+}
+
+
+.list {
+    margin-top: 10px
+}
+

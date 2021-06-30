@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!--    og tag-->
+    <meta property="og:title" content="my blog" />
+    <meta property="og:description" content="그냥 쓱 한번 보고가슈" />
+    <!-- <meta property="og:image" content="{{ url_for('static', filename='ogimage.jpg') }}" /> -->
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <!-- Kakao 주소 API -->
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+    <!-- 내가 만든 JS & CSS -->
+    <script src="/js/boardList.js"></script>
+    <link rel="stylesheet" href="/css/list.css" /> 
+
+    <!-- 폰트 스타일 -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+
+    <title>Travel the World</title>
+
+</head>
+
+<body>
+<div id='background' style="background-color:#FFFBFC">
+    <div class='wrap'>
+        <div class='banner' onclick='window.location.href="/"'>
+            <img src="static/flowerlogo.jfif"/>
+
+        </div>
+        <button onclick='window.location.href="/upload"' type="button" class="btn btn-outline-secondary" style='float:right; margin-bottom: 10px;'>글쓰기</button>
+
+
+        <div class='list'>
+            <table id='boardList' class="table table-hover table-striped text-center">
+                <tr class="table-light" style="align-content: center;">
+                    <td class="table-light">No</td>
+                    <td class="table-light">제목</td>
+                    <td class="table-light">작성자</td>
+                    <td class="table-light">작성일자</td>
+                    <td class="table-light">조회수</td>
+                </tr> 
+              </table>
+
+        </div>     
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+.wrap {
+    font-family: 'Do Hyeon', sans-serif;
+    width: 900px;
+    height : 1000px;
+    margin: auto;   
+    background-color: white      
+}
+
+.banner {
+    height: 70px;
+    background-color:white;
+    cursor: pointer;
+
+}
+
+img {
+    margin: auto;
+    width: 200px;
+    padding-top: 50px;
+    display: block;
+    text-align: center;
+}
+
+
+.post_body {
+    padding: 60px;
+    margin-top: 0px;
+    height: 600px;
+    /* background-color:green */
+}
+
+.title {
+    padding-top: 20px;
+    height: 70px; 
+}
+
+.content {
+    font-size: 20px;
+    padding-top: 30px;
+    height: 450px;
+}
+
+input {
+    outline:none;
+    background-color:transparent;
+    border:0 solid black;
+    width: 500px
+}
+
+textarea {
+    width: 780px;
+    height: 380px;
+    resize: none;
+    outline: none;
+    background-color:transparent;
+    border:0 solid black;
+}
+
+.container .btn {
+    display: block;
+    margin: 5px;
+}
