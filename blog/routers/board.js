@@ -3,7 +3,11 @@ const express = require("express");
 const router = express.Router();
 //db 호출
 const board = require("../schemas/board");
-
+const cookieParser = require('cookie-parser');
+function getUserIP(req) {
+    const addr = req.headers['x-forwarded-for'] || req.connection.remoteAddress
+    return addr
+  }
 
 // 게시글 리스트 출력 (제목, 작성자명, 작성날짜, 정렬: 날짜기준 내림차순)
 // 왜 views api와 아래 url를 매치안해주면 호출 조차 안될까?
@@ -16,12 +20,25 @@ router.get('/list', async(req, res) => {
 // 상세 페이지 출력
 router.get('/detail/:boardId', async (req, res) => {
     const { boardId }  = req.params
+    // board Id 기준으로 db 검색
     board_detail = await board.findOne({ boardId: boardId })
-    // 조회수 증가
-    board.updateOne({ boardId }, {'$inc': {'viewCount': 1}})
+
+    // 조회수 올리기
+    // 쿠키를 이용하여 조회수 중복을 방지해준다.
+    if (req.cookies[boardId] == undefined) {
+        res.cookie(boardId, getUserIP(req), {
+        // 유효시간 : 12분     
+        maxAge: 720000
+        })
+        // 조회수 증가 (await를 안붙히니까 안되었음 도대체왜!!!!)
+        await board.updateOne({ boardId }, { $inc: {'viewCount': 1}})
+    }
+
     res.json({ board: board_detail })
-    
 });
+
+
+
 
 // 게시글 업로드
 router.post('/upload', async(req, res) => {
