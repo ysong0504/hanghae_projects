@@ -13,6 +13,10 @@ const boardSchema = new Schema({
     unique: true,
     default: 0
   },
+  userId: {
+    type: String,
+    required: true,
+  },
   title: {
     type: String,
     required: true
@@ -21,10 +25,10 @@ const boardSchema = new Schema({
     type: String,
     required: true
   },
-  author: {
-    type: String,
-    required: true
-  },
+  // author: {
+  //   type: String,
+  //   required: true
+  // },
   date: {
     type: Date,
     required: true
@@ -33,10 +37,10 @@ const boardSchema = new Schema({
     type: Number,
     default: 0
   },
-  board_pw: {
-    type: Number,
-    required: true
-  }
+  // board_pw: {
+  //   type: String,
+  //   required: true
+  // }
   // isModified: {
   //   type: String,
   //   default: false

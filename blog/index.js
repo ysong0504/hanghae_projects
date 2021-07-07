@@ -27,18 +27,45 @@ app.use((req, res, next) => {
   next();
 });
 
+// process.on('uncaughtException', function(err) {
+//   console.log('Caught exception: ' + err);
+//   throw err;
+// });
 
 // router 객체 생성
 const boardRouter = require('./routers/board')
+const userRouter = require('./routers/user')
+const commentRouter = require('./routers/comment')
 app.use("/api", [boardRouter]);
+app.use("/api", [userRouter]);
+app.use("/api", [commentRouter]);
 
 
 app.get('/', (req, res) => {
-  res.render('boardList') 
+  // 사용자 계정이 저장되어있는 쿠키 보내기
+  if (req.cookies['userId']) {
+    currentUser = req.cookies['userId']
+  } else {
+    currentUser = 'false'
+  }
+  console.log('index!!: ' + currentUser)
+  res.render('boardList', { currentUser }) 
 })
 
+app.get('/login', (req, res) => {
+  res.render('login') 
+})
+
+app.get('/signup', (req, res) => {
+  res.render('signup') 
+})
 
 app.get('/detail', (req, res) => {
+  if (req.cookies['userId']) {
+    currentUser = req.cookies['userId']
+  }
+  console.log(currentUser)
+  // 현재 로그인된 유저의 정보를 넘겨준다.
   res.render('boardDetail')
 });
 

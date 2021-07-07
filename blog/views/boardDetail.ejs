@@ -38,18 +38,21 @@
 
 
     <title>Travel the World</title>
+    <script>
+
+    </script>
+
+
 </head>
 <body>
     <div id='background' style="background-color:#FFFBFC">
+       
         <div class='wrap'>
-            <div class='banner' onclick='window.location.href="/"'>
-                <img src="static/flowerlogo.jfif"/>
-            </div>
-
-                <div class='post_body'>
-                    <h6 id='date'></h6>
-                    <div class='title'>
-                    <!-- 작성자 & 제목 넣는 곳 -->
+            <%-include ('banner') %>
+            <div class='post_body'>
+                <h6 id='date'></h6>
+                <div class='title'>
+                <!-- 작성자 & 제목 넣는 곳 -->
                     <div style='float: left' id='title_and_author'></div>
                     <!-- 수정, 삭제, 저장 버튼 위치 -->
                     <div style='float: right' id='btn'></div>
@@ -57,8 +60,32 @@
                 <!-- 내용 넣는 곳 -->
                 <div class='content' id ='content_detail'><hr></div>
             </div>
+            <!--comment 다는 곳 -->
+            <div class='comment_body'>   
+                <div class="form-floating">
+                    <textarea onclick='check_auth()' id='comment_content' class="form-control" placeholder="Leave a comment here" style="height: 100px"></textarea>
+                    <label for="floatingTextarea2">Comments</label>
+                </div>
+                <div class='comment_btn'>
+                    <button id="upload_btn" type="button" onclick='upload_comment()' class="btn btn-secondary">댓글달기</button>
+                </div>
+        
+                <table class="table">
+                    <tbody id="comment_list">
+                        <%if (currentUser != null) { %>
+                          
+                        <% } %> 
+
+                    </tbody>
+                </table>
+    
+        
+            </div>
+
 
         </div>   
+
+
     </div>
 </body>
 </html>

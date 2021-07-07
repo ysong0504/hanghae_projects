@@ -42,16 +42,13 @@
 </head>
 <body>
     <div id='background' style="background-color:#F6FCF5">
-        <div class='wrap'>
-            <div class='banner' onclick='window.location.href="/"'>
-                <img src="static/flowerlogo.jfif"/>
-            </div>
-    
+        <div class='wrap'>           
+            <%-include ('banner') %>
             <div class='post_body' id='post'>
                 <div class='title'>
                     <div style='float: left'>
                         <h1><input id='title' type='text' placeholder='제목'></input></h1>
-                        <h5><input id='author' type='text' placeholder='작성자명'></input></h5>
+                        <!-- <h5><input id='author' type='text' placeholder='작성자명'></input></h5> -->
                         <!-- <h5><input id='password' type='password' placeholder='비밀번호 (나중에 수정 또는 삭제 시 필요하니 꼭 입력해주세요!)'></input></h5> -->
                     </div>
 

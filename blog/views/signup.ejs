@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!--    og tag-->
+    <meta property="og:title" content="떠나자, Travel" />
+    <meta property="og:description" content="그냥 쓱 한번 보고가슈" />
+    <meta property="og:image" content="{{ url_for('static', filename='ogimage.jpg') }}" />
+
+    <!-- Bootstrap CSS -->
+   <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <!-- Kakao 주소 API -->
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+    <!-- 내가 만든 JS & CSS -->
+    <!-- <script src="static/script.js"></script>
+   <link rel="stylesheet" href="static/style.css" /> -->
+
+    <!-- 폰트 스타일 -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+
+    <title>Travel the World | SignUp Page </title>
+    <style>
+        .wrap {
+            font-family: 'Do Hyeon', sans-serif;
+            width: 600px;
+            margin: auto;
+            height: 100%;
+            padding-top: 100px;
+        }
+
+         .background_img {
+            width: 50%;
+            float: left;
+        }
+
+
+         .insert_page {
+             padding-top: 200px;
+             width: 50%;
+             float: right;
+         }
+
+        .mybtn {
+            display: block;
+            margin: 10px auto auto;
+        }
+
+        .videoBox {
+            width: 800px;
+            /* padding-top: 70px; */
+            padding-bottom: 70px;
+
+            /*margin-bottom: 15px;*/
+            height: 700px;
+            overflow: hidden;
+            position: relative;
+            margin-left: 50px;
+
+        }
+
+        video {
+            background-color: #F7F4F4;
+            width: 500px;
+            height: 800px;
+        }
+
+        p {
+            color: red;
+        }
+    </style>
+
+    <script>
+
+        if (localStorage.length > 0) {
+            console.log(localStorage)
+            alert('이미 로그인이 되어있습니다. 메인 페이지로 이동합니다.')
+            window.location.href="/"
+        }
+
+
+        function signup() {
+            $.ajax({
+                type: 'POST',
+                url: `/api/users`,
+                data: {
+                    userId: $('#id').val(),
+                    password: $('#pw').val(),
+                    nickname: $('#nickname').val(),
+                    confirmPassword: $('#pw_confirmation').val(),
+                },
+                success: function (response) {
+                    alert('회원가입성공 :', response)
+                    console.log('성공: ' , response)
+                    if (response['result'] == 'success') {
+                        window.location.href='/login'
+                    }
+                }, error: function (response) {
+                    console.log('실패: ' , response.responseJSON)
+                        alert(response.responseJSON.errorMessage)
+                        location.reload()
+                    }
+            })
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="wrap ">
+        <form class="col-md-13">
+            <div class="col-md-13">
+              <label for="validationDefault01" class="form-label">아이디</label>
+              <input type="text" class="form-control" id="id"  required>
+              <p>※ 3자 이상, 알파벳과 숫자를 꼭! 포함해주세요>< </p>
+            </div>
+            <div class="col-md-13">
+              <label for="validationDefault02" class="form-label">닉네임</label>
+              <input type="text" class="form-control" id="nickname"  required>
+              <p>※ 1자 이상 </p>
+            </div>
+            <div class="col-md-13">
+              <label for="validationDefault03" class="form-label">비밀번호</label>
+              <input type="password" class="form-control" id="pw" required>
+              <p>※ 4자 이상 & 아이디 포함ㄴㄴ</p>
+            </div>
+            <div class="col-md-13">
+                <label for="validationDefault03" class="form-label">비밀번호 확인</label>
+                <input type="password" class="form-control" id="pw_confirmation" required>
+                <p></p>
+              </div>
+           
+            <div class="col-13">
+              <button class="btn btn-secondary" onclick="signup()" type="button">회원가입</button>
+              <button class="btn btn-secondary" onclick="window.location.href='login'" type="button">로그인 하러가기</button>
+              <h6 style="margin-top: 10px; cursor: pointer;" onclick="window.location.href='/'">🧾 로그인없이 보러가기</h6>
+            </div>
+            <div>
+                
+            </div>
+          </form>
+
+
+           
+
+    </div>
+</body>
+</html>
+

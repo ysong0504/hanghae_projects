@@ -10,35 +10,40 @@ function getFormatDate(d) {
 
 
 function upload_post() { 
-    let password = prompt('수정, 삭제 시 사용할 수 있는 비밀번호를 입력해주세요.')
+    // let password = prompt('수정, 삭제 시 사용할 수 있는 비밀번호를 입력해주세요. ')
+
+    // if (password.match(/[^0-9]/g)) {
+    //     alert("숫자만..입력해줘");
+    //     return
+    // }
 
     let title = $('#title').val()
     let author =  $('#author').val()
     let content = $('#content').val()
-    
 
     if (title === '') {
         alert('제목을 입력해주세욧!')
-    } else if (author === '') {
-        alert('작성자를 입력해주세욧!')
     } else if (content === '') {
         alert('내용을 입력해주세욧!')
     } else {
         $.ajax({
         type: 'POST',
         url: `/api/upload`,
+        headers: {
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
         data: {
             date: Date.now(),
             title: title,
-            author: author,
+            // author: author,
             content: content,
-            board_pw: password                     
+            // board_pw: password     
         },
         success: function (response) {
             if (response['result'] == 'success') {
                 window.location.href='/'
             }
-        }
+        },
     })
 }    
 }

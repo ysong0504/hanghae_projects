@@ -13,6 +13,11 @@
 
 }
 
+.btn_login {
+    padding-top: 20px;
+    float: right;
+}
+
 img {
     margin: auto;
     width: 200px;
@@ -40,6 +45,7 @@ img {
     height: 450px;
 }
 
+
 input {
     outline:none;
     background-color:transparent;
@@ -59,4 +65,32 @@ textarea {
 .container .btn {
     display: block;
     margin: 5px;
+}
+
+.comment_body {
+    padding: 60px;
+    margin-top: 0px;
+    height: 600px;
+}
+
+.comment_input {
+    width: 100%; /* Full width */
+    height: 10px
+}
+
+.pagiination {
+    margin: auto;
+    display: block;
+    width: 100%;
+}
+
+.comment_btn {
+    float: right;
+    margin-top: 10;
+    margin-bottom: 10px;
+}
+
+.comment_list {
+    vertical-align: middle;
+    text-align: center;
 }
