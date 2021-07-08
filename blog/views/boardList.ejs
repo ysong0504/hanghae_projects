@@ -40,13 +40,16 @@
 </head>
 
 <body>
+
 <div id='background' style="background-color:#FFFBFC">
     <div class='wrap'>
-        <%-include ('banner', { currentUser }) %>
-        <% %>
+        <% if ( typeof currentUser != "undefined" ) { %>
+            <%- include('banner', { currentUser }) %>
+        <% }else{ %>
+            <%- include('banner') %>
+        <% } %>
+
         <button onclick='auth_check()' type="button" class="btn btn-outline-danger" style='float:right; margin-bottom: 10px;'>글쓰기</button>
-
-
         <div class='list'>
             <table id='boardList' class="table text-center">
                 <tr class="table-light" style="align-content: center;">

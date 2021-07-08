@@ -77,19 +77,21 @@
     </style>
     <script>
         // 로그인 상태면 '로그아웃' 버튼만 출력
+        $(document).ready(function () {
+            show();
+        });
         
-        // $('#bbttn').append(`<button class='btn_banner' onclick='window.location.href="/login"' type="button">로그인</button>
-        //                                 <button class='btn_banner' onclick='window.location.href="/signup"' type="button">회원가입</button>`)
+        function show( ){
+            if (localStorage.length == 0) {
+                $('#check_btn').append(` <button id='login' class='btn_banner btn btn-outline-secondary' onclick='window.location.href="/login"' type="button">로그인</button>
+                                        <button id='signin' class='btn_banner btn btn-outline-secondary' onclick='window.location.href="/signup"' type="button">회원가입</button>`)
+            // 비로그인 상태라면 '로그인', '회원가입' 버튼 출력
+            } else {
+                $('#check_btn').append(`<button class='btn_banner' onclick='logout()' type="button">로그아웃</button>`)
+            }
 
-
-        // if (!localStorage) {
-        //     $('#banner_btn').append(`<button class='btn_banner' onclick='window.location.href="/login"' type="button">로그인</button>
-        //                                 <button class='btn_banner' onclick='window.location.href="/signup"' type="button">회원가입</button>`)
-        // // 비로그인 상태라면 '로그인', '회원가입' 버튼 출력
-        // } else {
-        //     $('#banner_btn').append(`<button class='btn_banner' onclick='logout()' type="button">로그아웃</button>`)
-        // }
-
+        }
+      
 
         function logout() {
             localStorage.clear();
@@ -107,13 +109,8 @@
     
 </head>
 <body>
-    <div class="top_banner" >    
-        <%if (currentUser != 'false') { %>
-            <button class='btn_banner btn btn-outline-secondary' onclick='logout()' type="button">로그아웃</button> 
-        <% } else { %>
-            <button class='btn_banner btn btn-outline-secondary' onclick='window.location.href="/login"' type="button">로그인</button>
-            <button class='btn_banner btn btn-outline-secondary' onclick='window.location.href="/signup"' type="button">회원가입</button>
-        <% } %> 
+    <div id='check_btn' class="top_banner" >    
+       
     </div>
     
     <div id='background' style="background-color: white">
